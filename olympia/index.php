@@ -1,65 +1,56 @@
 <?php
-$pageTitle = 'Olympia 2028 | Ergebnisse & Medaillenspiegel';
+$pageTitle = 'LA28 | Ergebnisse, Medaillen & Wettkämpfe';
 $activePage = 'home';
 require __DIR__ . '/includes/header.php';
 ?>
 <main>
-  <section class="hero" id="start">
-    <div class="hero__inner">
-      <p class="eyebrow">LOS ANGELES · 14.–30. JULI 2028</p>
-      <h1>Die Welt.<br><span>Im Wettkampf.</span></h1>
-      <p class="hero__copy">Erlebe die größten Momente des Sports. Entdecke Ergebnisse, Athletinnen und Athleten sowie den aktuellen Medaillenspiegel.</p>
-      <a class="button button--gold" href="#ergebnisse">Ergebnisse entdecken <span aria-hidden="true">↘</span></a>
-      <div class="hero__facts">
-        <div><strong>5</strong><span>Sportarten</span></div>
-        <div><strong>15</strong><span>Beispiel-Ergebnisse</span></div>
-        <div><strong>12</strong><span>Nationen</span></div>
-      </div>
+  <section class="scoreboard-hero" id="start">
+    <div class="hero-copy">
+      <div class="event-kicker"><span class="live-dot"></span> LA28 · LOS ANGELES 2028</div>
+      <h1>THE WORLD.<br><em>IN PLAY.</em></h1>
+      <p>Alle Wettkämpfe. Alle Ergebnisse. Jeder entscheidende Moment.</p>
+      <div class="hero-actions"><a class="btn btn-primary" href="#live-results">Ergebnisse ansehen <span>↘</span></a><a class="text-link" href="#sports">Disziplin entdecken <span>→</span></a></div>
     </div>
-    <div class="hero__rings" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></div>
-    <div class="hero__side-note">FASTER · HIGHER · STRONGER</div>
+    <div class="hero-art" aria-label="Grafisches LA28-Motiv"><div class="sun-disc"></div><div class="orbit orbit-one"></div><div class="orbit orbit-two"></div><div class="hero-mark"><span>LA</span><b>28</b><small>LOS ANGELES</small></div><span class="art-caption">FASTER · HIGHER · STRONGER</span></div>
+    <div class="hero-bottomline"><span>14—30 JULY 2028</span><span>THE OLYMPIC GAMES</span><span>LOS ANGELES · USA</span></div>
   </section>
-
-  <section class="content-section" id="ergebnisse">
-    <div class="section-heading">
-      <div><p class="eyebrow eyebrow--blue">DIE ENTSCHEIDUNGEN</p><h2>Wettkampf-Ergebnisse</h2><p class="section-subtitle">Fiktive Athletinnen und Athleten – erstellt für den Frontend-Prototyp.</p></div>
-      <span class="demo-label"><i></i> DEMO-DATEN</span>
+  <section class="quick-strip" aria-label="Wettkampf-Übersicht"><div><span class="strip-label">WETTKAMPFTAG</span><strong>TAG 04</strong></div><div><span class="strip-label">ERGEBNISSE HEUTE</span><strong>24 <small>final</small></strong></div><div><span class="strip-label">MEDAILLEN VERGEBEN</span><strong>18 <small>Sätze</small></strong></div><div><span class="strip-label">NATIONEN</span><strong>42 <small>im Einsatz</small></strong></div></section>
+  <section class="results-section page-wrap" id="live-results">
+    <div class="section-topline"><div><span class="section-index">01 / RESULTS CENTER</span><h2>Ergebnisse im Überblick<span class="accent-dot">.</span></h2><p>Die wichtigsten Entscheidungen und Resultate auf einen Blick.</p></div><div class="result-state"><i></i> DEMO-LIVEÜBERSICHT</div></div>
+    <div class="result-controls"><div class="gender-switch" role="group" aria-label="Wettkampfklasse"><button class="gender-btn is-active" data-gender="all">Alle</button><button class="gender-btn" data-gender="Frauen">Frauen</button><button class="gender-btn" data-gender="Männer">Männer</button></div>
+      <label class="control-field"><span>Sportart</span><select id="sportFilter"><option value="all">Alle Sportarten</option><option>Schwimmen</option><option>Leichtathletik</option><option>Turnen</option><option>Radsport</option><option>Judo</option></select></label>
+      <label class="control-field"><span>Disziplin</span><select id="disciplineFilter"><option value="all">Alle Disziplinen</option><option>50 m Freistil</option><option>100 m Freistil</option><option>100 m Sprint</option><option>Weitsprung</option><option>Boden</option><option>Einzelzeitfahren</option><option>Halbmittelgewicht</option></select></label>
+      <label class="control-field"><span>Wertung</span><select id="medalFilter"><option value="all">Alle Ergebnisse</option><option value="Gold">Gold</option><option value="Silber">Silber</option><option value="Bronze">Bronze</option></select></label>
+      <label class="search-field"><span>⌕</span><input id="athleteSearch" type="search" placeholder="Athlet / Nation suchen" aria-label="Athlet oder Nation suchen"></label>
     </div>
-    <div class="filter-bar">
-      <label class="search-box"><span aria-hidden="true">⌕</span><input id="athleteSearch" type="search" placeholder="Athlet oder Land suchen …" aria-label="Athlet oder Land suchen"></label>
-      <select id="sportFilter" aria-label="Sportart filtern"><option value="all">Alle Sportarten</option><option>Leichtathletik</option><option>Schwimmen</option><option>Turnen</option><option>Radsport</option><option>Judo</option></select>
-      <select id="medalFilter" aria-label="Medaille filtern"><option value="all">Alle Platzierungen</option><option value="Gold">Gold</option><option value="Silber">Silber</option><option value="Bronze">Bronze</option></select>
-    </div>
-    <div class="results-grid" id="resultsGrid">
-      <article class="result-card" data-sport="Leichtathletik" data-medal="Gold" data-search="elena berger deutschland 100 meter sprint"><div class="result-card__top"><span class="sport-tag">LEICHTATHLETIK</span><span class="medal medal--gold">🥇 GOLD</span></div><div class="result-card__event">100 m Sprint · Frauen</div><div class="result-card__athlete"><div class="avatar avatar--rose">EB</div><div><h3>Elena Berger</h3><p>🇩🇪 Deutschland</p></div></div><div class="result-card__score"><strong>10,92 s</strong><span>1. Platz</span></div></article>
-      <article class="result-card" data-sport="Schwimmen" data-medal="Silber" data-search="noah williams usa schwimmen freestyle"><div class="result-card__top"><span class="sport-tag">SCHWIMMEN</span><span class="medal medal--silver">🥈 SILBER</span></div><div class="result-card__event">200 m Freistil · Männer</div><div class="result-card__athlete"><div class="avatar avatar--blue">NW</div><div><h3>Noah Williams</h3><p>🇺🇸 USA</p></div></div><div class="result-card__score"><strong>1:44,38 min</strong><span>2. Platz</span></div></article>
-      <article class="result-card" data-sport="Turnen" data-medal="Bronze" data-search="mei tan japan turnen boden"><div class="result-card__top"><span class="sport-tag">TURNEN</span><span class="medal medal--bronze">🥉 BRONZE</span></div><div class="result-card__event">Boden · Frauen</div><div class="result-card__athlete"><div class="avatar avatar--lilac">MT</div><div><h3>Mei Tan</h3><p>🇯🇵 Japan</p></div></div><div class="result-card__score"><strong>14,200 Pkt.</strong><span>3. Platz</span></div></article>
-      <article class="result-card" data-sport="Radsport" data-medal="Gold" data-search="lucas moreau frankreich radsport zeitfahren"><div class="result-card__top"><span class="sport-tag">RADSPORT</span><span class="medal medal--gold">🥇 GOLD</span></div><div class="result-card__event">Zeitfahren · Männer</div><div class="result-card__athlete"><div class="avatar avatar--green">LM</div><div><h3>Lucas Moreau</h3><p>🇫🇷 Frankreich</p></div></div><div class="result-card__score"><strong>48:21 min</strong><span>1. Platz</span></div></article>
-      <article class="result-card" data-sport="Judo" data-medal="Silber" data-search="amina el amrani marokko judo"><div class="result-card__top"><span class="sport-tag">JUDO</span><span class="medal medal--silver">🥈 SILBER</span></div><div class="result-card__event">Halbmittelgewicht · Frauen</div><div class="result-card__athlete"><div class="avatar avatar--gold">AE</div><div><h3>Amina El Amrani</h3><p>🇲🇦 Marokko</p></div></div><div class="result-card__score"><strong>Ippon</strong><span>2. Platz</span></div></article>
-      <article class="result-card" data-sport="Leichtathletik" data-medal="Bronze" data-search="kwame mensah ghana weitsprung"><div class="result-card__top"><span class="sport-tag">LEICHTATHLETIK</span><span class="medal medal--bronze">🥉 BRONZE</span></div><div class="result-card__event">Weitsprung · Männer</div><div class="result-card__athlete"><div class="avatar avatar--orange">KM</div><div><h3>Kwame Mensah</h3><p>🇬🇭 Ghana</p></div></div><div class="result-card__score"><strong>8,31 m</strong><span>3. Platz</span></div></article>
-    </div>
-    <p class="empty-state" id="emptyState" hidden>Keine passenden Ergebnisse gefunden. Ändere deine Filter.</p>
-  </section>
-
-  <section class="medal-section" id="medaillenspiegel">
-    <div class="section-heading section-heading--light"><div><p class="eyebrow">NATIONEN IM VERGLEICH</p><h2>Der Medaillenspiegel</h2><p class="section-subtitle">Ein beispielhafter Zwischenstand für unser Schulprojekt.</p></div><span class="demo-label demo-label--dark">FIKTIVE WERTE</span></div>
-    <div class="medal-table-wrap"><table class="medal-table"><thead><tr><th>Rang</th><th>Nation</th><th>🥇 Gold</th><th>🥈 Silber</th><th>🥉 Bronze</th><th>Gesamt</th></tr></thead><tbody>
-      <tr><td class="rank">01</td><td><span class="flag">🇩🇪</span> Deutschland</td><td>4</td><td>2</td><td>3</td><td class="total">9</td></tr>
-      <tr><td class="rank">02</td><td><span class="flag">🇺🇸</span> USA</td><td>3</td><td>4</td><td>1</td><td class="total">8</td></tr>
-      <tr><td class="rank">03</td><td><span class="flag">🇫🇷</span> Frankreich</td><td>3</td><td>1</td><td>2</td><td class="total">6</td></tr>
-      <tr><td class="rank">04</td><td><span class="flag">🇯🇵</span> Japan</td><td>2</td><td>2</td><td>3</td><td class="total">7</td></tr>
-      <tr><td class="rank">05</td><td><span class="flag">🇬🇧</span> Großbritannien</td><td>1</td><td>2</td><td>1</td><td class="total">4</td></tr>
+    <div class="results-meta"><span><b id="visibleCount">6</b> ERGEBNISSE</span><span>ALLE ZEITEN UND WERTE SIND FIKTIVE DEMODATEN</span></div>
+    <div class="results-table-wrap"><table class="results-table"><thead><tr><th>RANG</th><th>WETTBEWERB</th><th>ATHLET / TEAM</th><th>NATION</th><th>ERGEBNIS</th><th>MEDAILLE</th></tr></thead><tbody id="resultsBody">
+      <tr class="result-row" data-gender="Frauen" data-sport="Schwimmen" data-discipline="50 m Freistil" data-medal="Gold" data-search="lena hoffmann deutschland"><td><span class="rank-number rank-gold">01</span></td><td><b>50 m Freistil</b><small>Schwimmen · Frauen</small></td><td class="athlete-cell"><span class="athlete-avatar avatar-pink">LH</span><b>Lena Hoffmann</b></td><td><span class="flag">🇩🇪</span> GER</td><td class="score-cell">24,08 <small>s</small></td><td><span class="medal-pill gold">GOLD</span></td></tr>
+      <tr class="result-row" data-gender="Männer" data-sport="Leichtathletik" data-discipline="100 m Sprint" data-medal="Gold" data-search="marcus reed usa"><td><span class="rank-number rank-gold">01</span></td><td><b>100 m Sprint</b><small>Leichtathletik · Männer</small></td><td class="athlete-cell"><span class="athlete-avatar avatar-orange">MR</span><b>Marcus Reed</b></td><td><span class="flag">🇺🇸</span> USA</td><td class="score-cell">9,82 <small>s</small></td><td><span class="medal-pill gold">GOLD</span></td></tr>
+      <tr class="result-row" data-gender="Frauen" data-sport="Turnen" data-discipline="Boden" data-medal="Silber" data-search="mei tan japan"><td><span class="rank-number rank-silver">02</span></td><td><b>Boden</b><small>Turnen · Frauen</small></td><td class="athlete-cell"><span class="athlete-avatar avatar-lilac">MT</span><b>Mei Tan</b></td><td><span class="flag">🇯🇵</span> JPN</td><td class="score-cell">14,566 <small>Pkt.</small></td><td><span class="medal-pill silver">SILBER</span></td></tr>
+      <tr class="result-row" data-gender="Männer" data-sport="Radsport" data-discipline="Einzelzeitfahren" data-medal="Bronze" data-search="lucas moreau frankreich"><td><span class="rank-number rank-bronze">03</span></td><td><b>Einzelzeitfahren</b><small>Radsport · Männer</small></td><td class="athlete-cell"><span class="athlete-avatar avatar-green">LM</span><b>Lucas Moreau</b></td><td><span class="flag">🇫🇷</span> FRA</td><td class="score-cell">48:21 <small>min</small></td><td><span class="medal-pill bronze">BRONZE</span></td></tr>
+      <tr class="result-row" data-gender="Frauen" data-sport="Leichtathletik" data-discipline="Weitsprung" data-medal="Silber" data-search="ama kofi ghana"><td><span class="rank-number rank-silver">02</span></td><td><b>Weitsprung</b><small>Leichtathletik · Frauen</small></td><td class="athlete-cell"><span class="athlete-avatar avatar-blue">AK</span><b>Ama Kofi</b></td><td><span class="flag">🇬🇭</span> GHA</td><td class="score-cell">6,91 <small>m</small></td><td><span class="medal-pill silver">SILBER</span></td></tr>
+      <tr class="result-row" data-gender="Männer" data-sport="Judo" data-discipline="Halbmittelgewicht" data-medal="Bronze" data-search="youssef omar marokko"><td><span class="rank-number rank-bronze">03</span></td><td><b>Halbmittelgewicht</b><small>Judo · Männer</small></td><td class="athlete-cell"><span class="athlete-avatar avatar-yellow">YO</span><b>Youssef Omar</b></td><td><span class="flag">🇲🇦</span> MAR</td><td class="score-cell">Ippon <small>4:12</small></td><td><span class="medal-pill bronze">BRONZE</span></td></tr>
     </tbody></table></div>
+    <p class="empty-state" id="emptyState" hidden>Keine Ergebnisse gefunden. Bitte passe deine Auswahl an.</p>
+    <div class="section-foot"><span>ERGEBNISSE NACH SPORTART, DISZIPLIN UND WETTKAMPFKLASSE</span><a href="#sports">Alle Sportarten entdecken ↗</a></div>
   </section>
-
-  <section class="sports-section" id="sportarten">
-    <div class="section-heading"><div><p class="eyebrow eyebrow--blue">VIELFALT DES SPORTS</p><h2>Im Fokus: Sportarten</h2><p class="section-subtitle">Ein kleiner Einblick in die Wettbewerbe der Demo-Seite.</p></div></div>
+  <section class="yesterday-section"><div class="page-wrap yesterday-grid"><div class="yesterday-intro"><span class="section-index">02 / RECAP</span><h2>Gestern.<br><em>In Erinnerung.</em></h2><p>Die Highlights des vergangenen Wettkampftages – kompakt zusammengefasst.</p><a href="#medals" class="text-link">Zum Medaillenspiegel →</a></div>
+    <article class="highlight-card highlight-main"><div class="highlight-art swim-art"><span class="art-label">HIGHLIGHT · SCHWIMMEN</span><div class="water-lines"></div><strong>01</strong></div><div class="highlight-copy"><span>GESTERN · 20:45 UHR</span><h3>Ein Finale für die Ewigkeit</h3><p>Im 100-m-Freistil-Finale fiel die Entscheidung auf den letzten Metern. Ein denkbar knappes Rennen.</p><b>100 m Freistil · Finale</b></div></article>
+    <article class="highlight-card highlight-secondary"><div class="highlight-art track-art"><span class="art-label">HIGHLIGHT · ATHLETIK</span><strong>02</strong></div><div class="highlight-copy"><span>GESTERN · 18:10 UHR</span><h3>Sprung zur Bestmarke</h3><p>Ein weiter Satz sorgt für Begeisterung im Stadion.</p><b>Weitsprung · Finale</b></div></article>
+  </div></section>
+  <section class="page-wrap sports-section" id="sports"><div class="section-topline"><div><span class="section-index">03 / EXPLORE SPORTS</span><h2>Finde deinen Wettbewerb<span class="accent-dot">.</span></h2><p>Erst die Sportart wählen, danach gezielt zur Disziplin springen.</p></div><a class="text-link" href="#live-results">Alle Resultate →</a></div>
     <div class="sports-grid">
-      <a class="sport-tile sport-tile--track" href="#ergebnisse"><span>01 / SPEED</span><strong>Leichtathletik</strong><small>Sprint · Weitsprung · Wurf</small></a>
-      <a class="sport-tile sport-tile--swim" href="#ergebnisse"><span>02 / WATER</span><strong>Schwimmen</strong><small>Freistil · Lagen · Rücken</small></a>
-      <a class="sport-tile sport-tile--gym" href="#ergebnisse"><span>03 / POWER</span><strong>Turnen</strong><small>Boden · Sprung · Barren</small></a>
-      <a class="sport-tile sport-tile--bike" href="#ergebnisse"><span>04 / ENDURANCE</span><strong>Radsport</strong><small>Straße · Bahn · Zeitfahren</small></a>
+      <a class="sport-card sport-swim" href="#live-results" data-sport-link="Schwimmen"><span class="sport-number">01 / WATER</span><div class="sport-icon">〰</div><h3>Schwimmen</h3><p>50 m · 100 m · 200 m · Freistil · Rücken</p><span class="card-arrow">↗</span></a>
+      <a class="sport-card sport-track" href="#live-results" data-sport-link="Leichtathletik"><span class="sport-number">02 / TRACK & FIELD</span><div class="sport-icon">↗</div><h3>Leichtathletik</h3><p>Sprint · Weitsprung · Hochsprung · Wurf</p><span class="card-arrow">↗</span></a>
+      <a class="sport-card sport-gym" href="#live-results" data-sport-link="Turnen"><span class="sport-number">03 / PERFORMANCE</span><div class="sport-icon">✳</div><h3>Turnen</h3><p>Boden · Sprung · Barren · Balken</p><span class="card-arrow">↗</span></a>
+      <a class="sport-card sport-bike" href="#live-results" data-sport-link="Radsport"><span class="sport-number">04 / ENDURANCE</span><div class="sport-icon">◉</div><h3>Radsport</h3><p>Straße · Bahn · Einzelzeitfahren</p><span class="card-arrow">↗</span></a>
     </div>
   </section>
+  <section class="medals-section" id="medals"><div class="page-wrap"><div class="section-topline"><div><span class="section-index">04 / MEDAL TABLE</span><h2>Die Nationen im Vergleich<span class="accent-dot">.</span></h2><p>Der Medaillenspiegel – sortiert nach Gold, Silber und Bronze.</p></div><span class="result-state">FIKTIVER ZWISCHENSTAND</span></div>
+    <div class="medal-table-wrap"><table class="medal-table"><thead><tr><th>RANG</th><th>NATION</th><th><span class="medal-dot dot-gold"></span> GOLD</th><th><span class="medal-dot dot-silver"></span> SILBER</th><th><span class="medal-dot dot-bronze"></span> BRONZE</th><th>GESAMT</th></tr></thead><tbody>
+      <tr><td class="country-rank">01</td><td><span class="flag">🇺🇸</span> USA</td><td>8</td><td>6</td><td>4</td><td class="country-total">18</td></tr><tr><td class="country-rank">02</td><td><span class="flag">🇩🇪</span> Deutschland</td><td>6</td><td>5</td><td>3</td><td class="country-total">14</td></tr><tr><td class="country-rank">03</td><td><span class="flag">🇯🇵</span> Japan</td><td>5</td><td>4</td><td>5</td><td class="country-total">14</td></tr><tr><td class="country-rank">04</td><td><span class="flag">🇫🇷</span> Frankreich</td><td>4</td><td>5</td><td>2</td><td class="country-total">11</td></tr><tr><td class="country-rank">05</td><td><span class="flag">🇬🇧</span> Großbritannien</td><td>3</td><td>3</td><td>4</td><td class="country-total">10</td></tr>
+    </tbody></table></div>
+  </div></section>
 </main>
 <?php require __DIR__ . '/includes/footer.php'; ?>
