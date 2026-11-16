@@ -1,28 +1,44 @@
 document.addEventListener('DOMContentLoaded', () => {
   const search = document.getElementById('athleteSearch');
   const sport = document.getElementById('sportFilter');
+  const discipline = document.getElementById('disciplineFilter');
   const medal = document.getElementById('medalFilter');
-  const cards = [...document.querySelectorAll('.result-card')];
+  const genderButtons = [...document.querySelectorAll('.gender-btn')];
+  const rows = [...document.querySelectorAll('.result-row')];
   const empty = document.getElementById('emptyState');
+  const count = document.getElementById('visibleCount');
+  let selectedGender = 'all';
 
   function filterResults() {
     const query = (search?.value || '').trim().toLocaleLowerCase('de');
-    const selectedSport = sport?.value || 'all';
-    const selectedMedal = medal?.value || 'all';
     let visible = 0;
-
-    cards.forEach(card => {
-      const matchesQuery = (card.dataset.search || '').toLocaleLowerCase('de').includes(query);
-      const matchesSport = selectedSport === 'all' || card.dataset.sport === selectedSport;
-      const matchesMedal = selectedMedal === 'all' || card.dataset.medal === selectedMedal;
-      const show = matchesQuery && matchesSport && matchesMedal;
-      card.hidden = !show;
-      if (show) visible++;
+    rows.forEach(row => {
+      const matches = (selectedGender === 'all' || row.dataset.gender === selectedGender)
+        && ((sport?.value || 'all') === 'all' || row.dataset.sport === sport.value)
+        && ((discipline?.value || 'all') === 'all' || row.dataset.discipline === discipline.value)
+        && ((medal?.value || 'all') === 'all' || row.dataset.medal?.toLowerCase() === medal.value.toLowerCase())
+        && (row.dataset.search || '').toLocaleLowerCase('de').includes(query);
+      row.hidden = !matches;
+      if (matches) visible++;
     });
-    if (empty) empty.hidden = visible !== 0;
+    if (empty) empty.hidden = visible > 0;
+    if (count) count.textContent = visible;
   }
+  [search, sport, discipline, medal].forEach(el => el?.addEventListener(el === search ? 'input' : 'change', filterResults));
+  genderButtons.forEach(button => button.addEventListener('click', () => {
+    selectedGender = button.dataset.gender;
+    genderButtons.forEach(item => item.classList.toggle('is-active', item === button));
+    filterResults();
+  }));
 
-  [search, sport, medal].forEach(control => control?.addEventListener(control === search ? 'input' : 'change', filterResults));
+  document.querySelectorAll('[data-sport-link]').forEach(link => link.addEventListener('click', () => {
+    if (sport) sport.value = link.dataset.sportLink;
+    if (discipline) discipline.value = 'all';
+    if (medal) medal.value = 'all';
+    selectedGender = 'all';
+    genderButtons.forEach(item => item.classList.toggle('is-active', item.dataset.gender === 'all'));
+    filterResults();
+  }));
 
   const toggle = document.getElementById('menuToggle');
   const nav = document.getElementById('mainNav');
@@ -35,4 +51,5 @@ document.addEventListener('DOMContentLoaded', () => {
     nav.classList.remove('is-open');
     toggle?.setAttribute('aria-expanded', 'false');
   }));
+  filterResults();
 });
